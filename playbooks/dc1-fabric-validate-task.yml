@@ -1,0 +1,16 @@
+- name: validate states on EOS devices
+  hosts: DC1_FABRIC
+
+  tasks:
+
+    - name: include global_vars
+      tags: [always]
+      include_vars: "{{ item }}"
+      with_items:
+        - "../global_vars/AVD_LAB.yml"
+        - "../global_vars/EOS.yml"
+
+    - name: validate states on EOS devices
+      include_tasks: "ntp.yml"
+      import_role:
+         name: arista.avd.eos_validate_state

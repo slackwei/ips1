@@ -1,0 +1,27 @@
+port_profiles:
+
+  TENANT_A_OPZone:
+    mode: access
+    vlans: "210"
+
+  TENANT_A_ALL:
+    mode: trunk
+    vlans: "220-221,230-231,260-261"
+
+servers:
+
+  server-2:
+    rack: RackB
+    adapters:
+      - server_ports: [ Eth1 ]
+        switch_ports: [ Ethernet3 ]
+        switches: [ DC2-L2LEAF1A ]
+        profile: TENANT_A_OPZone
+      - server_ports: [ Eth2, Eth3 ]
+        switch_ports: [ Ethernet4, Ethernet4 ]
+        switches: [ DC2-LEAF1A, DC2-LEAF1B ]
+        profile: TENANT_A_ALL
+        port_channel:
+          state: present
+          description: PortChanne1
+          mode: active

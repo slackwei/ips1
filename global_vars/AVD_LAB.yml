@@ -1,0 +1,58 @@
+# Nashua EVE-NG LAB shared attributes
+
+# local users
+local_users:
+  admin:
+    privilege: 15
+    role: network-admin
+    sha512_password: $6$kHbbE9/L.GrNTtl0$YnmI7ytA.5OtiR.z8HCPNo48NPxufpzNeQPNDBe7TOp3jdrQuwbWJPkcIIlgTUk1JEliJYvPkMKQBOn3oRC960
+  cvpadmin:
+    privilege: 15
+    role: network-admin
+    sha512_password: $6$g7vDU1eTXmx3UNVm$vbD3LzxM/sSXAvzLVbJh27ni0hCw3rYWBX0gfj3QWl1.KmBBf9ZzlqEX2Tcz13I51WqXfvGUoPRhuDZ712PK7.
+
+# Cloud Vision server
+cvp_instance_ips:
+  - 192.168.111.43
+
+cvp_ingestauth_key: magickey
+
+# OOB Management network default gateway.
+mgmt_gateway: 192.168.111.1
+
+# dns servers.
+name_servers:
+ - 192.168.111.45
+
+dns_domain: slackwei
+
+# NTP Servers IP or DNS name, first NTP server will be prefered, and sourced from Managment
+ntp_servers:
+  - 192.168.111.45
+
+eos_validate_state_name: 'reports'
+
+tacacs_servers:
+  hosts:
+    - host: 192.168.111.45
+      vrf: MGMT
+      key: 052A140632584F58
+aaa_authentication:
+  login:
+    default: group tacacs+ local
+aaa_authorization:
+  exec_default: group tacacs+ local
+aaa_accounting:
+  exec:
+    default:
+      type: start-stop
+      group: tacacs+
+  commands:
+    commands_default:
+      - commands: all
+        type: start-stop
+        group: tacacs+
+        logging: true
+
+custom_templates:
+  - "DC1/alias.j2"

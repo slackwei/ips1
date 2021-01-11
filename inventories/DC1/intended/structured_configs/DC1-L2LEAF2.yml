@@ -1,0 +1,185 @@
+## Ansible Generated ##
+
+### DC1-L2LEAF2 ###
+
+
+### Leaf Info ###
+l2leaf_node_group: DC1_L2LEAF2
+switch_platform: vEOS-LAB
+leaf_id: 12
+switch_mgmt_ip: 192.168.111.36/24
+leaf_filter_tenants: ['Tenant_A', 'Tenant_B']
+leaf_filter_tags: ['fw']
+leaf_allowed_vrfs: ['Tenant_A_OP_Zone', 'Tenant_B_OP_Zone']
+leaf_allowed_svis: [111, 211]
+leaf_allowed_vlans: [111, 211]
+leaf_mlag: False
+
+service_routing_protocols_model: multi-agent
+ip_routing: true
+
+### Hardware Counter
+hardware_counters:
+
+### Daemon TerminAttr
+daemon_terminattr:
+  ingestgrpcurl:
+    ips:
+      - 192.168.111.43
+    port: 9910
+  ingestauth_key: magickey
+  ingestvrf: MGMT
+  smashexcludes: "ale,flexCounter,hardware,kni,pulse,strata"
+  ingestexclude: "/Sysdb/cell/1/agent,/Sysdb/cell/2/agent"
+
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+
+### Event Monitor ###
+event_monitor:
+
+### Event Handler ###
+event_handlers:
+
+### Load Interval ###
+load_interval:
+
+### Queue Monitor Lenght ###
+queue_monitor_length:
+
+### Name Servers ###
+name_server:
+  source:
+    vrf: MGMT
+  nodes:
+    - 192.168.111.45
+
+### NTP Servers ###
+ntp_server:
+  local_interface:
+    vrf: MGMT
+    interface: Management1
+  nodes:
+    - 192.168.111.45
+
+### Redundancy ###
+redundancy:
+
+### Spanning-tree ###
+spanning_tree:
+  mode: mstp
+  priority: 16384
+
+
+### AAA authorization ###
+aaa_authorization:
+  exec_default: group tacacs+ local
+
+### local users ###
+local_users:
+  admin:
+    privilege: 15
+    role: network-admin
+    sha512_password: $6$kHbbE9/L.GrNTtl0$YnmI7ytA.5OtiR.z8HCPNo48NPxufpzNeQPNDBe7TOp3jdrQuwbWJPkcIIlgTUk1JEliJYvPkMKQBOn3oRC960
+  cvpadmin:
+    privilege: 15
+    role: network-admin
+    sha512_password: $6$g7vDU1eTXmx3UNVm$vbD3LzxM/sSXAvzLVbJh27ni0hCw3rYWBX0gfj3QWl1.KmBBf9ZzlqEX2Tcz13I51WqXfvGUoPRhuDZ712PK7.
+
+### Clock Timezone ###
+clock:
+
+### VLANs ###
+vlans:
+
+## Tenant_A ##
+  111:
+    tenant: Tenant_A
+    name: Tenant_A_OP_Zone_2
+## Tenant_B ##
+  211:
+    tenant: Tenant_B
+    name: Tenant_B_OP_fw
+
+### VRFs ###
+vrfs:
+  MGMT:
+    ip_routing: False
+### Port-Channel Interfaces ###
+port_channel_interfaces:
+  Port-Channel1:
+    description: DC1-LEAF2A_Po4
+    vlans: 111,211
+    mode: trunk
+    mlag: 1
+
+### Ethernet Interfaces ###
+ethernet_interfaces:
+## L3 LEAF link ##
+  Ethernet1:
+    peer: DC1-LEAF2A
+    peer_interface: Ethernet4
+    peer_type: l3leaf
+    description: DC1-LEAF2A_Ethernet4
+    channel_group:
+      id: 1
+      mode: active
+## L3 LEAF link ##
+  Ethernet2:
+    peer: DC1-LEAF2B
+    peer_interface: Ethernet4
+    peer_type: l3leaf
+    description: DC1-LEAF2B_Ethernet4
+    channel_group:
+      id: 1
+      mode: active
+  Ethernet3:
+    peer: centos
+    peer_interface: Eth2
+    peer_type: server
+    description: centos_Eth2
+    mode: trunk
+    vlans: 110-150,210-211,310-311
+    profile: TENANT_A_B_C
+
+### Management Interfaces ###
+management_interfaces:
+  Management1:
+    description: oob_management
+    vrf: MGMT
+    ip_address: 192.168.111.36/24
+    gateway: 192.168.111.1
+
+### VLAN Interfaces ###
+vlan_interfaces:
+
+### TCAM Profiles ###
+tcam_profile:
+
+### MAC address table ###
+mac_address_table:
+
+ip_igmp_snooping:
+  globally_enabled: True
+  vlans:
+## Tenant_A ##
+## Tenant_B ##
+
+### static routes ###
+static_routes:
+  - vrf: MGMT
+    destination_address_prefix: 0.0.0.0/0
+    gateway: 192.168.111.1
+
+
+### Queue Monitor Streaming ###
+queue_monitor_streaming:
+
+### Management API http ###
+management_api_http:
+  enable_https: True
+  enable_vrfs:
+    MGMT:

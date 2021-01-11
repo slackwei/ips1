@@ -1,0 +1,5 @@
+
+{% if router_bgp.as is defined %}
+!
+alias rb router bgp {{ dc1_as.leaf_as }}
+{% endif %}

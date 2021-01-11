@@ -1,0 +1,50 @@
+---
+dci_ethernet_interfaces:
+    Ethernet3:
+      peer: DC2-GW1A
+      peer_interface: Ethernet
+      peer_type: leaf
+      description: P2P_LINK_TO_DC2-GW1A_Ethernet3
+      mtu: 1600
+      type: routed
+      ip_address: 10.0.0.42/31
+    Ethernet4:
+      peer: DC2-GW1B
+      peer_interface: Ethernet
+      peer_type: leaf
+      description: P2P_LINK_TO_DC2-GW1B_Ethernet4
+      mtu: 1600
+      type: routed
+      ip_address: 10.0.0.44/31
+dci_bgp:
+  neighbors:
+    10.0.0.43:
+      peer_group: DCI-DC2-IPv4-UNDERLAY-PEERS
+    10.0.0.45:
+      peer_group: DCI-DC2-IPv4-UNDERLAY-PEERS
+    10.2.3.3:
+      peer_group: DCI-DC2-EVPN-OVERLAY-PEERS
+  peer_groups:
+      DCI-DC2-IPv4-UNDERLAY-PEERS:
+        type: ipv4
+        remote_as: 65001
+        # password: "AQQvKeimxJu+uGQ/yYvv9w=="
+        maximum_routes:
+        send_community: true
+      DCI-DC2-EVPN-OVERLAY-PEERS:
+        type: evpn
+        remote_as: 65001
+        update_source: Loopback0
+        bfd: true
+        ebgp_multihop: 3
+        # password: "q+VNViP5i4rVjW1cxFv2wA=="
+        send_community: true
+        maximum_routes: 0
+  address_family_evpn:
+    peer_groups:
+      DCI-DC2-EVPN-OVERLAY-PEERS:
+        activate: true
+  address_family_ipv4:
+    peer_groups:
+      DCI-DC2-IPv4-UNDERLAY-PEERS:
+        activate: true

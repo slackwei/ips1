@@ -1,0 +1,155 @@
+# DC1 Tenants Networks
+# Documentation of Tenant specific information - Vlans/VRFs
+
+tenants:
+  Tenant_A:
+    mac_vrf_vni_base: 10000
+    vrfs:
+      Tenant_A_OP_Zone:
+        vrf_vni: 11
+        vtep_diagnostic:
+          loopback: 100
+          loopback_ip_range: 10.255.1.0/24
+        svis:
+          110:
+            name: Tenant_A_OP_Zone_1
+            tags: [ opzone ]
+            enabled: true
+            ip_virtual_router_address: 10.1.10.1/24
+            nodes:
+              DC1-LEAF1A:
+                ip_address: 10.1.10.11/24
+              DC1-LEAF1B:
+                ip_address: 10.1.10.12/24
+              DC1-GW1:
+                ip_address: 10.1.10.91/24
+              DC1-GW2:
+                ip_address: 10.1.10.92/24
+          111:
+            name: Tenant_A_OP_Zone_2
+            tags: [ fw ]
+            enabled: true
+            ip_virtual_router_address: 10.1.11.1/24
+            nodes:
+              DC1-LEAF2A:
+                ip_address: 10.1.11.21/24
+              DC1-LEAF2B:
+                ip_address: 10.1.11.22/24
+              DC1-GW1:
+                ip_address: 10.1.11.91/24
+              DC1-GW2:
+                ip_address: 10.1.11.92/24
+          # 112:
+          #   name: Tenant_A_OP_Zone_3
+          #   tags: [ DC1_LEAF2 ]
+          #   enabled: true
+          #   ip_virtual_router_address: 10.1.12.1/24
+          #   nodes:
+          #     DC1-LEAF2A:
+          #       ip_address: 10.1.12.2/24
+          #     DC1-LEAF2B:
+          #       ip_address: 10.1.12.3/24
+          # 113:
+          #   name: Tenant_A_OP_Zone_WAN
+          #   tags: [ DC1_BL1 ]
+          #   enabled: true
+          #   nodes:
+          #     DC1-BL1A:
+          #       ip_address: 10.1.13.1/24
+          #     DC1-BL1B:
+          #       ip_address: 10.1.13.2/24
+
+      Tenant_A_WEB_Zone:
+        vrf_vni: 12
+        svis:
+          120:
+            name: Tenant_A_WEB_Zone_1
+            tags: [ web, erp1 ]
+            enabled: true
+            ip_address_virtual: 10.1.20.1/24
+          121:
+            name: Tenant_A_WEBZone_2
+            tags: [ web ]
+            enabled: true
+            ip_address_virtual: 10.1.21.1/24
+      Tenant_A_APP_Zone:
+        vrf_vni: 13
+        svis:
+          130:
+            name: Tenant_A_APP_Zone_1
+            tags: [ app, erp1 ]
+            enabled: true
+            ip_address_virtual: 10.1.30.1/24
+          131:
+            name: Tenant_A_APP_Zone_2
+            tags: [ app ]
+            enabled: true
+            ip_address_virtual: 10.1.31.1/24
+      Tenant_A_DB_Zone:
+        svis:
+          140:
+            enabled: 1
+            ip_subnet: 10.1.40.1/24
+            name: Tenant_A_DB_Zone_1
+            tags:
+            - db
+          141:
+            enabled: 1
+            ip_subnet: 10.1.41.1/24
+            name: Tenant_A_DB_Zone_2
+            tags:
+            - db
+        vrf_vni: 14
+  Tenant_B:
+    mac_vrf_vni_base: 20000
+    vrfs:
+      Tenant_B_OP_Zone:
+        svis:
+          210:
+            enabled: 1
+            ip_subnet: 10.2.10.1/24
+            name: Tenant_B_OP_Zone_1
+            tags:
+            - opzone
+          211:
+            enabled: 1
+            ip_subnet: 10.2.11.1/24
+            name: Tenant_B_OP_fw
+            tags:
+            - fw
+        vrf_vni: 21
+      Tenant_B_WAN_Zone:
+        svis:
+          250:
+            enabled: 1
+            ip_subnet: 10.2.50.1/24
+            name: Tenant_B_WAN_Zone_1
+            tags:
+            - wan
+        vrf_vni: 25
+  Tenant_C:
+    mac_vrf_vni_base: 30000
+    vrfs:
+      Tenant_C_OP_Zone:
+        svis:
+          310:
+            enabled: 1
+            ip_subnet: 10.3.10.1/24
+            name: Tenant_C_OP_Zone_1
+            tags:
+            - opzone
+          311:
+            enabled: 1
+            ip_subnet: 10.3.11.1/24
+            name: Tenant_C_OP_fw
+            tags:
+            - fw
+        vrf_vni: 31
+
+    # l2vlans:
+      # 160:
+      #   name: Tenant_A_VMOTION
+      #   tags: [ vmotion ]
+      # 161:
+      #   name: Tenant_A_NFS
+      #   tags: [ nfs ]
