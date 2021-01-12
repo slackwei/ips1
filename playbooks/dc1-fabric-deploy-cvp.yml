@@ -59,9 +59,9 @@
       tags:
         - build
 
-    - name: Print l3leaf status
+    - name: Print switch status
       debug:
-        msg: " {{ l3leaf }} "
+        msg: " {{ switch }} "
       tags:
         - build
 
