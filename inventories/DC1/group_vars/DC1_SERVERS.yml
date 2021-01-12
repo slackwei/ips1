@@ -10,7 +10,7 @@ port_profiles:
     vlans: 210-211
   TENANT_C:
     mode: trunk
-    vlans: 310-311
+    vlans: 310
 
   # TENANT_A_OPZone:
   #   mode: access
