@@ -59,15 +59,15 @@
       tags:
         - build
 
-    - name: Print status
+    - name: Print l3leaf status
       debug:
-        msg: " {{ leaf.vrfs }} "
+        msg: " {{ l3leaf }} "
       tags:
         - build
 
-    - name: Print status
+    - name: Print leaf status
       debug:
-        msg: " {{ leaf.svis }} "
+        msg: " {{ leaf }} "
       tags:
         - build
 
