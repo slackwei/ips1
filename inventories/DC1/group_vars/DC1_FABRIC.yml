@@ -186,8 +186,8 @@ cv_configlets:
   containers:
     DC1_FABRIC:
       - DC1-CUSTOM_ALIASES
-  devices:
-    DC1-GW1A:
-      - DC1-GW1A-DCI-VxLAN
-    DC1-GW1B:
-      - DC1-GW1B-DCI-VxLAN
+  # devices:
+  #   DC1-GW1A:
+  #     - DC1-GW1A-DCI-VxLAN
+  #   DC1-GW1B:
+  #     - DC1-GW1B-DCI-VxLAN
