@@ -1,0 +1,85 @@
+---
+CVP_DEVICES:
+  DC1-SPINE1:
+    name: DC1-SPINE1
+    parentContainerName: DC1_SPINES
+    configlets:
+      - DC1-AVD_DC1-SPINE1
+    imageBundle: []
+  DC1-SPINE2:
+    name: DC1-SPINE2
+    parentContainerName: DC1_SPINES
+    configlets:
+      - DC1-AVD_DC1-SPINE2
+    imageBundle: []
+  DC1-L2LEAF1:
+    name: DC1-L2LEAF1
+    parentContainerName: DC1_L2LEAF1
+    configlets:
+      - DC1-AVD_DC1-L2LEAF1
+    imageBundle: []
+  DC1-L2LEAF2:
+    name: DC1-L2LEAF2
+    parentContainerName: DC1_L2LEAF2
+    configlets:
+      - DC1-AVD_DC1-L2LEAF2
+    imageBundle: []
+  DC1-LEAF1A:
+    name: DC1-LEAF1A
+    parentContainerName: DC1_LEAF1
+    configlets:
+      - DC1-AVD_DC1-LEAF1A
+    imageBundle: []
+  DC1-LEAF1B:
+    name: DC1-LEAF1B
+    parentContainerName: DC1_LEAF1
+    configlets:
+      - DC1-AVD_DC1-LEAF1B
+    imageBundle: []
+  DC1-LEAF2A:
+    name: DC1-LEAF2A
+    parentContainerName: DC1_LEAF2
+    configlets:
+      - DC1-AVD_DC1-LEAF2A
+    imageBundle: []
+  DC1-LEAF2B:
+    name: DC1-LEAF2B
+    parentContainerName: DC1_LEAF2
+    configlets:
+      - DC1-AVD_DC1-LEAF2B
+    imageBundle: []
+  DC1-GW1A:
+    name: DC1-GW1A
+    parentContainerName: DC1_GW1
+    configlets:
+      - DC1-GW1A-DCI-VxLAN
+      - DC1-AVD_DC1-GW1A
+    imageBundle: []
+  DC1-GW1B:
+    name: DC1-GW1B
+    parentContainerName: DC1_GW1
+    configlets:
+      - DC1-GW1B-DCI-VxLAN
+      - DC1-AVD_DC1-GW1B
+    imageBundle: []
+CVP_CONTAINERS:
+  DC1_FABRIC:
+    parent_container: Tenant
+    configlets:
+      - DC1-CUSTOM_ALIASES
+  DC1_L2_LEAFS:
+    parent_container: DC1_FABRIC
+  DC1_L2LEAF1:
+    parent_container: DC1_L2_LEAFS
+  DC1_L2LEAF2:
+    parent_container: DC1_L2_LEAFS
+  DC1_L3_LEAFS:
+    parent_container: DC1_FABRIC
+  DC1_GW1:
+    parent_container: DC1_L3_LEAFS
+  DC1_LEAF1:
+    parent_container: DC1_L3_LEAFS
+  DC1_LEAF2:
+    parent_container: DC1_L3_LEAFS
+  DC1_SPINES:
+    parent_container: DC1_FABRIC
