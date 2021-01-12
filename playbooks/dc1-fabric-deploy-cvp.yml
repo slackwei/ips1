@@ -55,7 +55,7 @@
 
     - name: Print status
       debug:
-        msg: " {{ tenants }} "
+        msg: " {{ tenants }} | natural_sort "
       tags:
         - build
 
