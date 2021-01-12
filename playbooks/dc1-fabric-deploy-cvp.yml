@@ -13,11 +13,23 @@
         mode: '0755'
       delegate_to: 127.0.0.1
 
+    - name: Create intended directory
+      file:
+        path: {{ root_dir }}/intended
+        state: directory
+        mode: 0755
+
     - name: Create configs directory
-      file: path= '{{ root_dir }}/intended/structured_configs' state=directory mode=0755
+      file:
+        path: {{ root_dir }}/intended/structured_configs
+        state: directory
+        mode: 0755
 
     - name: Create structured_configs directory
-      file: path= '{{ root_dir }}/intended/configs' state=directory mode=0755
+      file:
+        path: {{ root_dir }}/intended/configs
+        state: directory
+        mode: 0755
 
     - name: include global_vars
       tags: [build, provision]
