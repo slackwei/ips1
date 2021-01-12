@@ -1,3 +1,3 @@
 ---
 root_dir: '/tmp/'
-dc1_inventory_file: '{{root_dir}}/dc1_inventory.yml'
+inventory_file: '{{root_dir}}/dc1_inventory.yml'
