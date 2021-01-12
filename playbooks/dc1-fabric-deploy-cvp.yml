@@ -55,7 +55,7 @@
 
     - name: Print status
       debug:
-        msg: " {{ tenants['Tenant_A'].vrfs['Tenant_A_WEB_Zone'].svis }} | arista.avd.natural_sort  "
+        msg: " {{ tenants['Tenant_A'].vrfs['Tenant_A_WEB_Zone'].svis  | arista.avd.natural_sort }} "
       tags:
         - build
 
