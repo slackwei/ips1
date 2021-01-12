@@ -61,13 +61,13 @@
 
     - name: Print status
       debug:
-        msg: " {{ switch }} "
+        msg: " {{ switch.mgmt_ip }} "
       tags:
         - build
 
     - name: Print status
       debug:
-        msg: " {{ leaf }} "
+        msg: " {{ leaf.id }} "
       tags:
         - build
 
