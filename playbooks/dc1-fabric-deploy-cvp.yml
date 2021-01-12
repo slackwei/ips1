@@ -59,13 +59,13 @@
       tags:
         - build
 
-    - name: Print switch status
+    - name: Print status
       debug:
         msg: " {{ switch }} "
       tags:
         - build
 
-    - name: Print leaf status
+    - name: Print status
       debug:
         msg: " {{ leaf }} "
       tags:
