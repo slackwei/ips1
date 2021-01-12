@@ -59,6 +59,18 @@
       tags:
         - build
 
+    - name: Print status
+      debug:
+        msg: " {{ leaf.vrfs }} "
+      tags:
+        - build
+
+    - name: Print status
+      debug:
+        msg: " {{ leaf.svis }} "
+      tags:
+        - build
+
 - name: Configuration deployment with CVP
   hosts: CVP-1
   connection: local
