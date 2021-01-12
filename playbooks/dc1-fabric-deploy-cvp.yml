@@ -5,6 +5,13 @@
   gather_facts: no
 
   tasks:
+    - name: Download Inventory file
+      tags: [ build ]
+      get_url:
+        url: 'https://raw.githubusercontent.com/slackwei/ips1/main/inventories/DC1/inventory.yml'
+        dest: '{{ inventory_file }}'
+        mode: '0755'
+      delegate_to: 127.0.0.1
 
     - name: include global_vars
       tags: [build, provision]
