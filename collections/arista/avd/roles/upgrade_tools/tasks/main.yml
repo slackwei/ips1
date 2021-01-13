@@ -1,3 +1,0 @@
----
-- name: 'Start Upgrade process for subset {{ subset }}.'
-  include_tasks: "./{{ subset }}.yml"
